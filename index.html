@@ -16,6 +16,80 @@
   pre * {
     font-size: var(--font-size);
   }
+
+  /* style tweaks */
+
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: none;
+  }
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: white;
+  }
+
+  .token.comment,
+  .token.block-comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #bbb;
+  }
+
+  .token.punctuation {
+    color: white;
+  }
+
+  .token.tag,
+  .token.attr-name,
+  .token.namespace,
+  .token.deleted {
+    color: #f2878a;
+  }
+
+  .token.function-name {
+    color: #71a6dc;
+  }
+
+  .token.boolean,
+  .token.number,
+  .token.function {
+    color: #ff9d59;
+  }
+
+  .token.property,
+  .token.class-name,
+  .token.constant,
+  .token.symbol {
+    color: #ffd565;
+  }
+
+  .token.selector,
+  .token.important,
+  .token.atrule,
+  .token.keyword,
+  .token.builtin {
+    color: #dca9dd;
+  }
+
+  .token.string,
+  .token.char,
+  .token.attr-value,
+  .token.regex,
+  .token.variable {
+    color: #8ed6a9;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url {
+    color: #87dddc;
+  }
+
+  .token.inserted {
+    color: #00cc00;
+  }
 </style>
 
 <p>From <a href="https://prismjs.com/index.html">Prism.js</a> and
@@ -34,7 +108,9 @@
 <div id="precontainer"><pre><code></code></pre></div>
 
 <p id="language">
-  <strong>Language:</strong>
+  <strong>Language (see list of <a
+    href="https://prismjs.com/index.html#supported-languages">supported
+    languages</a>):</strong>
   <input name="lang" value="handlebars">
 </p>
 
