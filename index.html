@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<title>highlighter</title>
+<link href="lib/prism.css" rel="stylesheet" />
+<style>
+  textarea {
+    min-height: 10em;
+    min-width: 50em;
+  }
+
+  #precontainer {
+    --font-size: 24pt;
+    background: black !important;
+    font-size: var(--font-size) !important;
+  }
+
+  pre * {
+    font-size: var(--font-size);
+  }
+</style>
+
+<p>From <a href="https://prismjs.com/index.html">Prism.js</a> and
+  <a href="https://prismjs.com/test.html">its test page</a>.</p>
+
+<p>
+  <textarea placeholder="Type some code here">&lt;div class="entry">
+  &lt;h1>{{title}}&lt;/h1>
+  &lt;div class="body">
+    {{body}}
+  &lt;/div>
+&lt;/div></textarea>
+</p>
+
+<p>Result:</p>
+<div id="precontainer"><pre><code></code></pre></div>
+
+<p id="language">
+  <strong>Language:</strong>
+  <input name="lang" value="handlebars">
+</p>
+
+<script src="lib/prism.js"></script>
+<script>
+  const input = document.querySelector('textarea');
+  const lang = document.querySelector('input[name=lang]');
+  const output = document.querySelector('pre > code');
+  const pre = document.querySelector('pre');
+
+  if (localStorage.lastHighlighterLanguage) {
+    lang.value = localStorage.lastHighlighterLanguage;
+  }
+
+  input.addEventListener('input', doHighlight);
+  lang.addEventListener('change', doHighlight);
+  lang.addEventListener('change', saveLang);
+  doHighlight();
+
+  pre.addEventListener('click', doSelect);
+
+  function saveLang() {
+    localStorage.lastHighlighterLanguage = lang.value;
+  }
+
+  function doHighlight() {
+    output.textContent = input.value.trim() + '\n ';
+    output.className = `language-${lang.value}`;
+    Prism.highlightElement(output);
+  }
+
+  function doSelect() {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(output);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("copy");
+    // input.focus();
+    input.select();
+  }
+</script>
