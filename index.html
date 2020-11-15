@@ -116,33 +116,48 @@
   <input name="lang" value="handlebars">
 </p>
 
+<p id="language">
+  <strong>Size:</strong>
+  <input type="number" name="size" min=1 value="24">
+</p>
+
 <script src="lib/prism.js"></script>
 <script>
   const input = document.querySelector('textarea');
   const lang = document.querySelector('input[name=lang]');
   const output = document.querySelector('pre > code');
   const pre = document.querySelector('pre');
+  const precontainer = document.querySelector('#precontainer');
+  const size = document.querySelector('input[name=size]');
 
   if (localStorage.lastHighlighterLanguage) {
     lang.value = localStorage.lastHighlighterLanguage;
   }
 
+  if (localStorage.lastHighlighterSize) {
+    size.value = localStorage.lastHighlighterSize;
+  }
+
   input.addEventListener('input', doHighlight);
   lang.addEventListener('change', doHighlight);
-  lang.addEventListener('change', saveLang);
+  size.addEventListener('change', doHighlight);
+  lang.addEventListener('change', saveStorage);
+  size.addEventListener('change', saveStorage);
   doHighlight();
   input.select();
 
   pre.addEventListener('click', doSelect);
 
-  function saveLang() {
+  function saveStorage() {
     localStorage.lastHighlighterLanguage = lang.value;
+    localStorage.lastHighlighterSize = size.value;
   }
 
   function doHighlight() {
     output.textContent = input.value.trim() + '\n ';
     output.className = `language-${lang.value}`;
     Prism.highlightElement(output);
+    precontainer.style.setProperty('--font-size', size.value + 'pt');
   }
 
   function doSelect() {
