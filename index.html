@@ -30,7 +30,7 @@
 &lt;/div></textarea>
 </p>
 
-<p>Result:</p>
+<p>Result (click to copy):</p>
 <div id="precontainer"><pre><code></code></pre></div>
 
 <p id="language">
@@ -53,6 +53,7 @@
   lang.addEventListener('change', doHighlight);
   lang.addEventListener('change', saveLang);
   doHighlight();
+  input.select();
 
   pre.addEventListener('click', doSelect);
 
@@ -73,7 +74,6 @@
     selection.removeAllRanges();
     selection.addRange(range);
     document.execCommand("copy");
-    // input.focus();
-    input.select();
+    setTimeout(() => input.select(), 300);
   }
 </script>
