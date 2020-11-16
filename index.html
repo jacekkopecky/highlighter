@@ -1,98 +1,6 @@
 <!DOCTYPE html>
 <title>highlighter</title>
-<link href="lib/prism.css" rel="stylesheet" />
-<style>
-  textarea {
-    min-height: 10em;
-    min-width: 50em;
-  }
-
-  #precontainer {
-    --font-size: 24pt;
-    background: black !important;
-    font-size: var(--font-size) !important;
-    max-height: 20rem;
-    overflow: auto;
-  }
-
-  pre * {
-    font-size: var(--font-size);
-  }
-
-  /* style tweaks */
-
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
-    background: none;
-  }
-
-  code[class*="language-"],
-  pre[class*="language-"] {
-    color: white;
-  }
-
-  .token.comment,
-  .token.block-comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
-    color: #bbb;
-  }
-
-  .token.punctuation {
-    color: white;
-  }
-
-  .token.tag,
-  .token.attr-name,
-  .token.namespace,
-  .token.deleted {
-    color: #f2878a;
-  }
-
-  .token.function-name {
-    color: #71a6dc;
-  }
-
-  .token.boolean,
-  .token.number,
-  .token.function {
-    color: #ff9d59;
-  }
-
-  .token.property,
-  .token.class-name,
-  .token.constant,
-  .token.symbol {
-    color: #ffd565;
-  }
-
-  .token.selector,
-  .token.important,
-  .token.atrule,
-  .token.keyword,
-  .token.builtin {
-    color: #dca9dd;
-  }
-
-  .token.string,
-  .token.char,
-  .token.attr-value,
-  .token.regex,
-  .token.variable {
-    color: #8ed6a9;
-  }
-
-  .token.operator,
-  .token.entity,
-  .token.url {
-    color: #87dddc;
-  }
-
-  .token.inserted {
-    color: #00cc00;
-  }
-</style>
+<link href="prism.css" rel="stylesheet" />
 
 <p>From <a href="https://prismjs.com/index.html">Prism.js</a> and
   <a href="https://prismjs.com/test.html">its test page</a>.</p>
@@ -107,6 +15,7 @@
 </p>
 
 <p>Result (click to copy):</p>
+<input type=checkbox id=lightdark name=lightdark><label for=lightdark> Switch light/dark</label>
 <div id="precontainer"><pre><code></code></pre></div>
 
 <p id="language">
@@ -129,28 +38,40 @@
   const pre = document.querySelector('pre');
   const precontainer = document.querySelector('#precontainer');
   const size = document.querySelector('input[name=size]');
+  const lightdark = document.querySelector('#lightdark');
 
-  if (localStorage.lastHighlighterLanguage) {
-    lang.value = localStorage.lastHighlighterLanguage;
-  }
-
-  if (localStorage.lastHighlighterSize) {
-    size.value = localStorage.lastHighlighterSize;
-  }
+  restoreStorage();
 
   input.addEventListener('input', doHighlight);
   lang.addEventListener('change', doHighlight);
   size.addEventListener('change', doHighlight);
   lang.addEventListener('change', saveStorage);
   size.addEventListener('change', saveStorage);
+  lightdark.addEventListener('input', saveStorage);
+
   doHighlight();
   input.select();
 
   pre.addEventListener('click', doSelect);
 
+  function restoreStorage() {
+    if (localStorage.lastHighlighterLanguage) {
+      lang.value = localStorage.lastHighlighterLanguage;
+    }
+
+    if (localStorage.lastHighlighterSize) {
+      size.value = localStorage.lastHighlighterSize;
+    }
+
+    if (localStorage.lastHighlighterLightdark) {
+      lightdark.checked = localStorage.lastHighlighterLightdark === 'true';
+    }
+  }
+
   function saveStorage() {
     localStorage.lastHighlighterLanguage = lang.value;
     localStorage.lastHighlighterSize = size.value;
+    localStorage.lastHighlighterLightdark = lightdark.checked;
   }
 
   function doHighlight() {

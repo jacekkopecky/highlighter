@@ -1,0 +1,199 @@
+/* adapted from default and coy prism themes
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	background: none;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 0 0.5em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+textarea {
+	min-height: 10em;
+	min-width: 50em;
+}
+
+#precontainer {
+	--font-size: 24pt;
+	font-size: var(--font-size) !important;
+	max-height: 20rem;
+	overflow: auto;
+	border: solid 0.2em #888;
+	border-radius: 0.4em;
+	margin-top: 1em;
+}
+
+pre * {
+	font-size: var(--font-size);
+}
+
+
+
+
+
+/* colors, first dark theme tweaked from tomorrow night */
+
+#lightdark:not(:checked) ~ #precontainer {
+	background: black;
+}
+
+#lightdark:not(:checked) ~ #precontainer code[class*="language-"],
+#lightdark:not(:checked) ~ #precontainer pre[class*="language-"] {
+	color: white;
+}
+
+
+#lightdark:not(:checked) ~ #precontainer .token.comment,
+#lightdark:not(:checked) ~ #precontainer .token.block-comment,
+#lightdark:not(:checked) ~ #precontainer .token.prolog,
+#lightdark:not(:checked) ~ #precontainer .token.doctype,
+#lightdark:not(:checked) ~ #precontainer .token.cdata {
+	color: #bbb;
+}
+
+#lightdark:not(:checked) ~ #precontainer .token.punctuation {
+	color: white;
+}
+
+#lightdark:not(:checked) ~ #precontainer .token.tag,
+#lightdark:not(:checked) ~ #precontainer .token.attr-name,
+#lightdark:not(:checked) ~ #precontainer .token.namespace,
+#lightdark:not(:checked) ~ #precontainer .token.deleted {
+	color: #f2878a;
+}
+
+#lightdark:not(:checked) ~ #precontainer .token.function-name {
+	color: #71a6dc;
+}
+
+#lightdark:not(:checked) ~ #precontainer .token.boolean,
+#lightdark:not(:checked) ~ #precontainer .token.number,
+#lightdark:not(:checked) ~ #precontainer .token.function {
+	color: #ff9d59;
+}
+
+#lightdark:not(:checked) ~ #precontainer .token.property,
+#lightdark:not(:checked) ~ #precontainer .token.class-name,
+#lightdark:not(:checked) ~ #precontainer .token.constant,
+#lightdark:not(:checked) ~ #precontainer .token.symbol {
+	color: #ffd565;
+}
+
+#lightdark:not(:checked) ~ #precontainer .token.selector,
+#lightdark:not(:checked) ~ #precontainer .token.important,
+#lightdark:not(:checked) ~ #precontainer .token.atrule,
+#lightdark:not(:checked) ~ #precontainer .token.keyword,
+#lightdark:not(:checked) ~ #precontainer .token.builtin {
+	color: #dca9dd;
+}
+
+#lightdark:not(:checked) ~ #precontainer .token.string,
+#lightdark:not(:checked) ~ #precontainer .token.char,
+#lightdark:not(:checked) ~ #precontainer .token.attr-value,
+#lightdark:not(:checked) ~ #precontainer .token.regex,
+#lightdark:not(:checked) ~ #precontainer .token.variable {
+	color: #8ed6a9;
+}
+
+#lightdark:not(:checked) ~ #precontainer .token.operator,
+#lightdark:not(:checked) ~ #precontainer .token.entity,
+#lightdark:not(:checked) ~ #precontainer .token.url {
+	color: #87dddc;
+}
+
+#lightdark:not(:checked) ~ #precontainer .token.inserted {
+	color: #00cc00;
+}
+
+
+/* light theme tweaked from coy */
+
+#lightdark:checked ~ #precontainer {
+	background: white;
+}
+
+#lightdark:checked ~ #precontainer code[class*="language-"],
+#lightdark:checked ~ #precontainer pre[class*="language-"] {
+	color: black;
+}
+
+#lightdark:checked ~ #precontainer .token.comment,
+#lightdark:checked ~ #precontainer .token.block-comment,
+#lightdark:checked ~ #precontainer .token.prolog,
+#lightdark:checked ~ #precontainer .token.doctype,
+#lightdark:checked ~ #precontainer .token.cdata {
+	color: #6D7B89;
+}
+
+#lightdark:checked ~ #precontainer .token.punctuation {
+	color: black;
+}
+
+#lightdark:checked ~ #precontainer .token.property,
+#lightdark:checked ~ #precontainer .token.tag,
+#lightdark:checked ~ #precontainer .token.boolean,
+#lightdark:checked ~ #precontainer .token.number,
+#lightdark:checked ~ #precontainer .token.function-name,
+#lightdark:checked ~ #precontainer .token.constant,
+#lightdark:checked ~ #precontainer .token.symbol,
+#lightdark:checked ~ #precontainer .token.deleted {
+	color: #b91c1c;
+}
+
+#lightdark:checked ~ #precontainer .token.selector,
+#lightdark:checked ~ #precontainer .token.attr-name,
+#lightdark:checked ~ #precontainer .token.string,
+#lightdark:checked ~ #precontainer .token.char,
+#lightdark:checked ~ #precontainer .token.function,
+#lightdark:checked ~ #precontainer .token.builtin,
+#lightdark:checked ~ #precontainer .token.inserted {
+	color: #1f8c00;
+}
+
+#lightdark:checked ~ #precontainer .token.operator,
+#lightdark:checked ~ #precontainer .token.entity,
+#lightdark:checked ~ #precontainer .token.url,
+#lightdark:checked ~ #precontainer .token.variable {
+	color: #966f49;
+}
+
+#lightdark:checked ~ #precontainer .token.atrule,
+#lightdark:checked ~ #precontainer .token.attr-value,
+#lightdark:checked ~ #precontainer .token.keyword,
+#lightdark:checked ~ #precontainer .token.class-name {
+	color: #0980a8;
+}
+
+#lightdark:checked ~ #precontainer .token.regex,
+#lightdark:checked ~ #precontainer .token.important {
+	color: #de8900;
+}
+
+#lightdark:checked ~ #precontainer .language-css .token.string,
+#lightdark:checked ~ #precontainer .style .token.string {
+	color: #966f49;
+}
