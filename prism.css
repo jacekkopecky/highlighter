@@ -33,18 +33,19 @@ pre[class*="language-"] {
 }
 
 textarea {
-	min-height: 10em;
-	min-width: 50em;
+	min-height: 10rem;
+	min-width: 50rem;
 }
 
 #precontainer {
 	--font-size: 24pt;
 	font-size: var(--font-size) !important;
-	max-height: 20rem;
+	height: 20rem;
+	box-sizing: border-box;
 	overflow: auto;
 	border: solid 0.2em #888;
 	border-radius: 0.4em;
-	margin-top: 1em;
+	margin-top: 1rem;
 }
 
 pre * {
