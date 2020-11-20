@@ -15,6 +15,7 @@ lang.addEventListener('change', doHighlight);
 size.addEventListener('change', doHighlight);
 lang.addEventListener('change', saveStorage);
 size.addEventListener('change', saveStorage);
+size.addEventListener('wheel', handleMouseWheel);
 lightdark.addEventListener('input', saveStorage);
 
 doHighlight();
@@ -57,4 +58,12 @@ function doSelect() {
   selection.addRange(range);
   document.execCommand('copy');
   setTimeout(() => input.select(), 300);
+}
+
+function handleMouseWheel(e) {
+  const step = Math.sign(e.deltaY);
+  if (step === 0) return;
+
+  size.valueAsNumber += step;
+  size.dispatchEvent(new Event('change'));
 }
