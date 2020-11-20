@@ -1,3 +1,5 @@
+/* global Prism */
+
 const input = document.querySelector('textarea');
 const lang = document.querySelector('input[name=lang]');
 const output = document.querySelector('pre > code');
@@ -53,6 +55,6 @@ function doSelect() {
   range.selectNodeContents(output);
   selection.removeAllRanges();
   selection.addRange(range);
-  document.execCommand("copy");
+  document.execCommand('copy');
   setTimeout(() => input.select(), 300);
 }
