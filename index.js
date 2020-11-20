@@ -64,6 +64,12 @@ function handleMouseWheel(e) {
   const step = Math.sign(e.deltaY);
   if (step === 0) return;
 
+  const min = Number(size.min) || 1;
+  const max = Number(size.max) || Infinity;
+
+  e.preventDefault();
   size.valueAsNumber += step;
+  if (size.valueAsNumber < min) size.valueAsNumber = min;
+  if (size.valueAsNumber > max) size.valueAsNumber = max;
   size.dispatchEvent(new Event('change'));
 }
