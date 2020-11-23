@@ -3,7 +3,6 @@
 const input = document.querySelector('textarea');
 const lang = document.querySelector('input[name=lang]');
 const output = document.querySelector('pre > code');
-const pre = document.querySelector('pre');
 const precontainer = document.querySelector('#precontainer');
 const size = document.querySelector('input[name=size]');
 const lightdark = document.querySelector('#lightdark');
@@ -17,11 +16,10 @@ lang.addEventListener('change', saveStorage);
 size.addEventListener('change', saveStorage);
 size.addEventListener('wheel', handleMouseWheel);
 lightdark.addEventListener('input', saveStorage);
+precontainer.addEventListener('click', doSelect);
 
 doHighlight();
 input.select();
-
-pre.addEventListener('click', doSelect);
 
 function restoreStorage() {
   if (localStorage.lastHighlighterLanguage) {
